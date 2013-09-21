@@ -21,7 +21,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'project_id'); ?>
-		<?php echo $form->textField($model,'project_id'); ?>
+		<?php echo $form->dropDownList($model,'project_id',CHtml::listData(Project::model()->findAll(), 'id', 'name'), array('prompt'=>'Select Role')); ?>
 		<?php echo $form->error($model,'project_id'); ?>
 	</div>
 
@@ -39,13 +39,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'bug_type_id'); ?>
-		<?php echo $form->textField($model,'bug_type_id'); ?>
+		<?php echo $form->dropDownList($model,'bug_type_id',CHtml::listData(BugType::model()->findAll(), 'id', 'bug_type'), array('prompt'=>'Select Role')); ?>
 		<?php echo $form->error($model,'bug_type_id'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'bug_status_id'); ?>
-		<?php echo $form->textField($model,'bug_status_id'); ?>
+		<?php echo $form->dropDownList($model,'bug_status_id',CHtml::listData(BugStatus::model()->findAll(), 'id', 'bug_status'), array('prompt'=>'Select Role')); ?>
 		<?php echo $form->error($model,'bug_status_id'); ?>
 	</div>
 
@@ -57,7 +57,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'assigned_to'); ?>
-		<?php echo $form->textField($model,'assigned_to'); ?>
+		<?php echo $form->dropDownList($model,'assigned_to',CHtml::listData(User::model()->findAll(), 'id', 'name'), array('prompt'=>'Select Role')); ?>
 		<?php echo $form->error($model,'assigned_to'); ?>
 	</div>
 
@@ -67,23 +67,7 @@
 		<?php echo $form->error($model,'due_date'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'closed_date'); ?>
-		<?php echo $form->textField($model,'closed_date'); ?>
-		<?php echo $form->error($model,'closed_date'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'created'); ?>
-		<?php echo $form->textField($model,'created'); ?>
-		<?php echo $form->error($model,'created'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'modified'); ?>
-		<?php echo $form->textField($model,'modified'); ?>
-		<?php echo $form->error($model,'modified'); ?>
-	</div>
+	
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

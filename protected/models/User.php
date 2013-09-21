@@ -15,6 +15,8 @@
  */
 class User extends ProjectTracker
 {
+	
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -61,7 +63,6 @@ class User extends ProjectTracker
 		return array(
 			'id' => 'ID',
 			'role_id' => 'Role',
-			'role.name'=>'Role',
 			'name' => 'Name',
 			'email' => 'Email',
 			'username' => 'Username',
@@ -88,13 +89,9 @@ class User extends ProjectTracker
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-		$criteria->with=array(
-		    'role.name',
-		);
-		
+		$criteria->with = array('role');
 		$criteria->compare('id',$this->id);
 		$criteria->compare('role_id',$this->role_id);
-		$criteria->compare('Role.name',$this->name,true);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('email',$this->email,true);
 		$criteria->compare('username',$this->username,true);

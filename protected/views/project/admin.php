@@ -47,9 +47,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'name',
-		'is_closed',
-		'created',
-		'modified',
+		array(
+			'name'=>'is_closed',
+			'value'=>'$data->is_closed ? "Yes" : "No"', 
+			'header'=>'closed',
+			'filter'=>array(
+				    '' => 'All',
+				    '1' => 'Yes',
+				    '0' => 'No',
+				),
+		),
+	
 		array(
 			'class'=>'CButtonColumn',
 		),

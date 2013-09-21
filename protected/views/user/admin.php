@@ -45,15 +45,17 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'Role.name',
+		//'role.name',
+		array(
+				'name'=>'role_id',
+				'value'=>'$data->role->name',
+				'filter'=>CHtml::listData(Role::model()->findAll(), 'id', 'name'),
+				'header'=>'Role Name',
+			),
 		'name',
 		'email',
 		'username',
-		/*'password',
-		'created',
-		'modified',
-		*/
+		
 		array(
 			'class'=>'CButtonColumn',
 		),
