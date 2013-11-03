@@ -42,13 +42,21 @@ body
 	border-top: 1px solid #C9E0ED;
 }
 
+#projects{
+    padding: 10px 20px;
+    font-size: 200%;
+    width: 200px;
+    float: left;
+    position: relative;
+}
 #logo
 {
 	padding: 10px 20px;
 	font-size: 200%;
-	width: 450px;
+	width: 300px;
 	float: left;
 	position: relative;
+    text-align: center;
 }
 
 #logout{

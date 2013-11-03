@@ -131,8 +131,7 @@ class BugController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
-	{
+	public function actionAdmin(){
 		$model=new Bug('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Bug']))

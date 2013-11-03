@@ -53,6 +53,9 @@ class Bug extends ProjectTracker
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'project'=>array(self::BELONGS_TO,'Project','project_id'),
+            'bug_status'=>array(self::BELONGS_TO,'BugStatus','bug_status_id'),
+            'bug_type'=>array(self::BELONGS_TO,'BugType','bug_type_id'),
 		);
 	}
 
@@ -94,7 +97,7 @@ class Bug extends ProjectTracker
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
 		$criteria=new CDbCriteria;
-
+        $criteria->with = array('project','bug_status','bug_type');
 		$criteria->compare('id',$this->id);
 		$criteria->compare('project_id',$this->project_id);
 		$criteria->compare('title',$this->title,true);

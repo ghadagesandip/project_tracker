@@ -21,7 +21,11 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
 	
-		$user = User::model()->findByAttributes(array('username'=>$this->username));
+		$user = User::model()->findByAttributes(
+            array('username'=>$this->username),
+            array('with'=>array('role'))
+
+        );
 		if ($user===null){
 			$this->errorCode = self::ERROR_USERNAME_INVALID;
 			
@@ -37,7 +41,7 @@ class UserIdentity extends CUserIdentity
                  }else{
                     $lastLogin = strtotime($user->last_login_time);
                  }
-                          
+
                  $this->setState('userData',$user);
                  $this->errorCode = self::ERROR_NONE;
 			}
@@ -50,4 +54,7 @@ class UserIdentity extends CUserIdentity
 	public function getId(){
 		return $this->_id;
 	}
+
+
+
 }

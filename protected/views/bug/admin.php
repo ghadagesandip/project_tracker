@@ -46,11 +46,27 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'id',
-		'project_id',
+		array(
+            'name'=>'project_id',
+            'value'=>'$data->project->name',
+            'filter'=>CHtml::listData(Project::model()->findAll(), 'id', 'name'),
+
+        ),
 		'title',
 		'description',
-		'bug_type_id',
-		'bug_status_id',
+
+        array(
+            'name'=>'bug_status_id',
+            'value'=>'$data->bug_status->bug_status',
+            'filter'=>CHtml::listData(BugStatus::model()->findAll(), 'id', 'bug_status'),
+
+        ),
+        array(
+            'name'=>'bug_type_id',
+            'value'=>'$data->bug_type->bug_type',
+            'filter'=>CHtml::listData(BugType::model()->findAll(), 'id', 'bug_type'),
+
+        ),
 		/*
 		'assigned_by',
 		'assigned_to',
