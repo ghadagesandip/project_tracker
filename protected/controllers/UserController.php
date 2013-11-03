@@ -6,7 +6,7 @@ class UserController extends Controller
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout='//layouts/column1';
 
 	/**
 	 * @return array action filters
@@ -27,7 +27,7 @@ class UserController extends Controller
 	public function accessRules(){
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','updateUser'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -164,4 +164,17 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+    public function actionUpdateUser(){
+        $role_id = $_POST['ProjectUser']['role_id'];
+        $data = User::model()->findAll('role_id=:role_id',array(':role_id'=>$role_id));
+        $data = CHtml::listData($data,'id','name');
+       // echo '<pre>'; print_r($data); exit;
+        foreach($data as $value=>$name)
+        {
+            echo CHtml::tag('option',
+                array('value'=>$value),CHtml::encode($name),true);
+        }
+    }
 }

@@ -24,5 +24,6 @@ $this->menu=array(
 		'id',
 		'project_id',
 		'user_id',
+		'role_id',
 	),
 )); ?>

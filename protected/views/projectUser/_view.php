@@ -10,11 +10,15 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('project_id')); ?>:</b>
-	<?php echo CHtml::encode($data->project_id); ?>
+	<?php echo CHtml::encode($data->project->name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
+	<?php echo CHtml::encode($data->user->username); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('role_id')); ?>:</b>
+	<?php echo CHtml::encode($data->role->name); ?>
 	<br />
 
 

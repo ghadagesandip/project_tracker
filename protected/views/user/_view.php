@@ -10,7 +10,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('role_id')); ?>:</b>
-	<?php echo CHtml::encode($data->role_id); ?>
+	<?php echo CHtml::encode($data->role->name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('name')); ?>:</b>

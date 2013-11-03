@@ -7,6 +7,7 @@
  * @property integer $id
  * @property integer $project_id
  * @property integer $user_id
+ * @property integer $role_id
  */
 class ProjectUser extends ProjectTracker
 {
@@ -26,10 +27,10 @@ class ProjectUser extends ProjectTracker
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('project_id, user_id', 'numerical', 'integerOnly'=>true),
+			array('project_id, user_id, role_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, project_id, user_id', 'safe', 'on'=>'search'),
+			array('id, project_id, user_id, role_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -41,6 +42,11 @@ class ProjectUser extends ProjectTracker
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+           'project'=>array(self::BELONGS_TO,'Project','project_id'),
+           'role'=>array(self::BELONGS_TO,'Role','role_id'),
+           'user'=>array(self::BELONGS_TO,'User','user_id'),
+
+
 		);
 	}
 
@@ -53,6 +59,7 @@ class ProjectUser extends ProjectTracker
 			'id' => 'ID',
 			'project_id' => 'Project',
 			'user_id' => 'User',
+			'role_id' => 'Role',
 		);
 	}
 
@@ -77,6 +84,7 @@ class ProjectUser extends ProjectTracker
 		$criteria->compare('id',$this->id);
 		$criteria->compare('project_id',$this->project_id);
 		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('role_id',$this->role_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

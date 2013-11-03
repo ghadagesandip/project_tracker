@@ -26,6 +26,11 @@
 		<?php echo $form->textField($model,'user_id'); ?>
 	</div>
 
+	<div class="row">
+		<?php echo $form->label($model,'role_id'); ?>
+		<?php echo $form->textField($model,'role_id'); ?>
+	</div>
+
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

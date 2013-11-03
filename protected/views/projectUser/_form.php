@@ -21,15 +21,35 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'project_id'); ?>
-		<?php echo $form->textField($model,'project_id'); ?>
+		<?php echo $form->dropDownList($model,'project_id',CHtml::listData(Project::model()->findAll(),'id','name'), array('prompt'=>'Select Project')); ?>
 		<?php echo $form->error($model,'project_id'); ?>
 	</div>
 
+    <div class="row">
+        <?php echo $form->labelEx($model,'role_id'); ?>
+        <?php echo $form->dropDownList($model,'role_id',
+                CHtml::listData(Role::model()->findAll(),'id','name'),
+                array(
+                    'prompt'=>'Select Role',
+
+                    'ajax'=>array(
+                        'type'=>'POST'
+                        , 'url'=>CController::createUrl('user/updateUser')
+                        , 'update'=>'#ProjectUser_user_id'  //selector to update
+
+                    )
+                )
+        ); ?>
+        <?php echo $form->error($model,'role_id'); ?>
+    </div>
+
 	<div class="row">
 		<?php echo $form->labelEx($model,'user_id'); ?>
-		<?php echo $form->textField($model,'user_id'); ?>
+		<?php echo $form->dropDownList($model,'user_id',array(),array('prompt'=>'Select User')); ?>
 		<?php echo $form->error($model,'user_id'); ?>
 	</div>
+
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
